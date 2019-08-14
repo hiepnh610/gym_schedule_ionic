@@ -1,5 +1,7 @@
 {
   "name": "gym_schedule_ionic",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
