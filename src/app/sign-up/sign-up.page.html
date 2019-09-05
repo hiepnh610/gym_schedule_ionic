@@ -7,23 +7,43 @@
               placeholder="Email"
               formControlName="email"></ion-input>
 
+            <div *ngIf="formErrors.email">
+              {{ formErrors?.email }}
+            </div>
+
             <ion-input
               placeholder="Username"
               formControlName="username"></ion-input>
 
+            <div *ngIf="formErrors.username">
+              {{ formErrors?.username }}
+            </div>
+
             <ion-input
               placeholder="Full Name"
               formControlName="fullName"></ion-input>
+
+            <div *ngIf="formErrors.fullName">
+              {{ formErrors?.fullName }}
+            </div>
 
             <ion-input
               type="password"
               placeholder="Password"
               formControlName="password"></ion-input>
 
+            <div *ngIf="formErrors.password">
+              {{ formErrors?.password }}
+            </div>
+
             <ion-input
               type="password"
               placeholder="Confirm Password"
               formControlName="confirmPassword"></ion-input>
+
+            <div *ngIf="formErrors.confirmPassword">
+              {{ formErrors?.confirmPassword }}
+            </div>
 
             <ion-button color="primary" expand="block">Login</ion-button>
           </form>
