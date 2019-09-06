@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { BaseComponent } from '@common/base/base.component';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.page.html',
   styleUrls: ['./sign-up.page.scss'],
 })
-export class SignUpPage implements OnInit {
+export class SignUpPage extends BaseComponent implements OnInit {
 
-  public frm = new FormGroup({
+  public frm: FormGroup;
+
+  public controlConfig = {
     email: new FormControl('', [
       Validators.required
     ]),
@@ -24,7 +27,7 @@ export class SignUpPage implements OnInit {
     confirmPassword: new FormControl('', [
       Validators.required
     ])
-  });
+  };
 
   public formErrors = {
     email: '',
@@ -52,9 +55,12 @@ export class SignUpPage implements OnInit {
     }
   };
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   ngOnInit() {
+    super.ngOnInit();
   }
 
 }
