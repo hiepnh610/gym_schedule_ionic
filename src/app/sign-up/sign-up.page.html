@@ -3,51 +3,64 @@
       <ion-row center>
         <ion-col>
           <form [formGroup]="frm">
-            <ion-input
-              placeholder="Email"
-              formControlName="email"></ion-input>
+            <div class="form-group">
+              <ion-input
+                placeholder="Email"
+                formControlName="email"></ion-input>
 
-            <div *ngIf="formErrors.email">
-              {{ formErrors?.email }}
+              <ion-text color="danger" *ngIf="formErrors.email">
+                <small>{{ formErrors?.email }}</small>
+              </ion-text>
             </div>
 
-            <ion-input
-              placeholder="Username"
-              formControlName="username"></ion-input>
+            <div class="form-group">
+              <ion-input
+                placeholder="Username"
+                formControlName="username"></ion-input>
 
-            <div *ngIf="formErrors.username">
-              {{ formErrors?.username }}
+              <ion-text color="danger" *ngIf="formErrors.username">
+                <small>{{ formErrors?.username }}</small>
+              </ion-text>
             </div>
 
-            <ion-input
-              placeholder="Full Name"
-              formControlName="fullName"></ion-input>
+            <div class="form-group">
+              <ion-input
+                placeholder="Full Name"
+                formControlName="fullName"></ion-input>
 
-            <div *ngIf="formErrors.fullName">
-              {{ formErrors?.fullName }}
+              <ion-text color="danger" *ngIf="formErrors.fullName">
+                <small>{{ formErrors?.fullName }}</small>
+              </ion-text>
             </div>
 
-            <ion-input
-              type="password"
-              placeholder="Password"
-              formControlName="password"></ion-input>
+            <div class="form-group">
+              <ion-input
+                type="password"
+                placeholder="Password"
+                formControlName="password"></ion-input>
 
-            <div *ngIf="formErrors.password">
-              {{ formErrors?.password }}
+              <ion-text color="danger" *ngIf="formErrors.password">
+                <small>{{ formErrors?.password }}</small>
+              </ion-text>
             </div>
 
-            <ion-input
-              type="password"
-              placeholder="Confirm Password"
-              formControlName="confirmPassword"></ion-input>
+            <div class="form-group">
+              <ion-input
+                type="password"
+                placeholder="Confirm Password"
+                formControlName="confirmPassword"></ion-input>
 
-            <div *ngIf="formErrors.confirmPassword">
-              {{ formErrors?.confirmPassword }}
+              <ion-text color="danger" *ngIf="formErrors.confirmPassword">
+                <small>{{ formErrors?.confirmPassword }}</small>
+              </ion-text>
             </div>
 
             <ion-button
               color="primary"
-              expand="block">Login</ion-button>
+              expand="block"
+              [disabled]="frm.pristine || frm.invalid">
+              Sign Up
+            </ion-button>
           </form>
 
           <a href="#" color="light">Forgot password?</a>

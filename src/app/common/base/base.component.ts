@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { DestroyComponent } from '../destroy/destroy.component';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'base-component',
@@ -22,6 +22,7 @@ export class BaseComponent extends DestroyComponent implements OnInit {
     this.frm = new FormGroup(this.controlConfig);
 
     this.frm.valueChanges
+      .pipe(debounceTime(500))
       .pipe(takeUntil(this.unsubscribeAll))
       .subscribe((data: any) => this.onValueChanged(data));
 
@@ -44,56 +45,5 @@ export class BaseComponent extends DestroyComponent implements OnInit {
         }
       }
     }
-  }
-
-  public showFormError() {
-    let errorMessage = '';
-    if (!this.frm) {
-      return errorMessage;
-    }
-
-    for (const field in this.formErrors) {
-      if (this.formErrors.hasOwnProperty(field)) {
-        const control = this.frm.get(field);
-        if (control) {
-          control.markAsTouched({ onlySelf: true });
-        }
-        if (control && !control.valid) {
-          if (control.controls) {
-            for (const fieldChild in control.controls) {
-              if (this.formErrors[field].hasOwnProperty(fieldChild)) {
-                const controlChild = this.frm.controls[field].get(fieldChild);
-                if (controlChild) {
-                  controlChild.markAsTouched({ onlySelf: true });
-                }
-                if (controlChild && !controlChild.valid) {
-                  for (const keyChild in controlChild.errors) {
-                    if (controlChild.errors.hasOwnProperty(keyChild)) {
-                      const messages = this.validationMessages[field][fieldChild][keyChild];
-                      this.formErrors[field][fieldChild] = messages + ' ';
-                      errorMessage += messages.length ? ('- ' + messages + '<br/>') : '';
-                      break;
-                    }
-                  }
-                }
-              }
-            }
-            continue;
-          }
-          for (const key in control.errors) {
-            if (control.errors.hasOwnProperty(key)) {
-              const messages = this.validationMessages[field][key];
-              if (messages) {
-                this.formErrors[field] = messages + ' ';
-                errorMessage += messages.length ? ('- ' + messages + '<br/>') : '';
-              }
-              break;
-            }
-          }
-        }
-      }
-    }
-
-    return errorMessage;
   }
 }
