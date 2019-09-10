@@ -19,6 +19,9 @@
       "dom"
     ],
     "paths": {
+      "@constants/*": [
+        "src/app/constants/*"
+      ],
       "@common/*": [
         "src/app/pages/common/*"
       ]

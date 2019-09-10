@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 import { BaseComponent } from '@common/base/base.component';
+import { ERROR_MESSAGES } from '@constants/messages';
 
 @Component({
   selector: 'app-sign-up',
@@ -44,24 +46,24 @@ export class SignUpPage extends BaseComponent implements OnInit {
 
   public validationMessages = {
     email: {
-      required: 'Email is required.',
-      email: 'Email address must be valid.'
+      required: ERROR_MESSAGES.EMAIL_REQUIRED,
+      email: ERROR_MESSAGES.EMAIL_VALID
     },
     username: {
-      required: 'Username is required.',
-      minlength: 'The minimum length of a password is 8 characters'
+      required: ERROR_MESSAGES.USERNAME_REQUIRED,
+      minlength: ERROR_MESSAGES.MIN_LENGTH
     },
     fullName: {
-      required: 'Full name is required.',
-      minlength: 'The minimum length of a password is 8 characters'
+      required: ERROR_MESSAGES.FULL_NAME_REQUIRED,
+      minlength: ERROR_MESSAGES.MIN_LENGTH
     },
     password: {
-      required: 'Password is required.',
-      minlength: 'The minimum length of a password is 8 characters'
+      required: ERROR_MESSAGES.PASSWORD_REQUIRED,
+      minlength: ERROR_MESSAGES.MIN_LENGTH
     },
     confirmPassword: {
-      required: 'Confirm password is required.',
-      minlength: 'The minimum length of a password is 8 characters'
+      required: ERROR_MESSAGES.CONFIRM_PASSWORD_REQUIRED,
+      minlength: ERROR_MESSAGES.MIN_LENGTH
     }
   };
 
@@ -82,5 +84,4 @@ export class SignUpPage extends BaseComponent implements OnInit {
   get password() { return this.frm.get('password'); }
 
   get confirmPassword() { return this.frm.get('confirmPassword'); }
-
 }
