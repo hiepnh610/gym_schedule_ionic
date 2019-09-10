@@ -8,7 +8,7 @@
                 placeholder="Email"
                 formControlName="email"></ion-input>
 
-              <ion-text color="danger" *ngIf="formErrors.email">
+              <ion-text color="danger" *ngIf="formErrors.email && email.invalid && (email.dirty || email.touched)">
                 <small>{{ formErrors?.email }}</small>
               </ion-text>
             </div>
@@ -18,7 +18,7 @@
                 placeholder="Username"
                 formControlName="username"></ion-input>
 
-              <ion-text color="danger" *ngIf="formErrors.username">
+              <ion-text color="danger" *ngIf="formErrors.username && username.invalid && (username.dirty || username.touched)">
                 <small>{{ formErrors?.username }}</small>
               </ion-text>
             </div>
@@ -28,7 +28,7 @@
                 placeholder="Full Name"
                 formControlName="fullName"></ion-input>
 
-              <ion-text color="danger" *ngIf="formErrors.fullName">
+              <ion-text color="danger" *ngIf="formErrors.fullName && fullName.invalid && (fullName.dirty || fullName.touched)">
                 <small>{{ formErrors?.fullName }}</small>
               </ion-text>
             </div>
@@ -39,7 +39,7 @@
                 placeholder="Password"
                 formControlName="password"></ion-input>
 
-              <ion-text color="danger" *ngIf="formErrors.password">
+              <ion-text color="danger" *ngIf="formErrors.password && password.invalid && (password.dirty || password.touched)">
                 <small>{{ formErrors?.password }}</small>
               </ion-text>
             </div>
@@ -50,7 +50,7 @@
                 placeholder="Confirm Password"
                 formControlName="confirmPassword"></ion-input>
 
-              <ion-text color="danger" *ngIf="formErrors.confirmPassword">
+              <ion-text color="danger" *ngIf="formErrors.confirmPassword && confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
                 <small>{{ formErrors?.confirmPassword }}</small>
               </ion-text>
             </div>
