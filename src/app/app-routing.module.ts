@@ -4,17 +4,17 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: './login/login.module#LoginPageModule'
+    loadChildren: './pages/login/login.module#LoginPageModule'
   },
 
   {
     path: 'login',
-    loadChildren: './login/login.module#LoginPageModule'
+    loadChildren: './pages/login/login.module#LoginPageModule'
   },
 
   {
     path: 'sign-up',
-    loadChildren: './sign-up/sign-up.module#SignUpPageModule'
+    loadChildren: './pages/sign-up/sign-up.module#SignUpPageModule'
   },
 
   {
@@ -24,7 +24,7 @@ const routes: Routes = [
 
   {
     path: 'forgot-password',
-    loadChildren: './forgot-password/forgot-password.module#ForgotPasswordPageModule'
+    loadChildren: './pages/forgot-password/forgot-password.module#ForgotPasswordPageModule'
   }
 ];
 @NgModule({

@@ -20,7 +20,7 @@
     ],
     "paths": {
       "@common/*": [
-        "src/app/common/*"
+        "src/app/pages/common/*"
       ]
     }
   }

@@ -13,7 +13,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../calendar/calendar.module').then(m => m.CalendarPageModule)
+              import('../pages/calendar/calendar.module').then(m => m.CalendarPageModule)
           }
         ]
       },
@@ -23,7 +23,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../news-feed/news-feed.module').then(m => m.NewsFeedPageModule)
+              import('../pages/news-feed/news-feed.module').then(m => m.NewsFeedPageModule)
           }
         ]
       },
@@ -33,7 +33,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../notification/notification.module').then(m => m.NotificationPageModule)
+              import('../pages/notification/notification.module').then(m => m.NotificationPageModule)
           }
         ]
       },
@@ -43,7 +43,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../plans/plans.module').then(m => m.PlansPageModule)
+              import('../pages/plans/plans.module').then(m => m.PlansPageModule)
           }
         ]
       },
@@ -53,7 +53,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../profile/profile.module').then(m => m.ProfilePageModule)
+              import('../pages/profile/profile.module').then(m => m.ProfilePageModule)
           }
         ]
       },
