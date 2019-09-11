@@ -2,11 +2,37 @@
   <ion-grid>
     <ion-row center>
       <ion-col>
-        <ion-input placeholder="Username"></ion-input>
+        <form [formGroup]="frm">
+          <div class="form-group">
+            <ion-input
+              placeholder="Username"
+              formControlName="username"></ion-input>
 
-        <ion-input placeholder="Password" type="password"></ion-input>
+            <ion-text color="danger"
+              *ngIf="formErrors.username && username.invalid && (username.dirty || username.touched)">
+              <small>{{ formErrors?.username }}</small>
+            </ion-text>
+          </div>
 
-        <ion-button color="primary" expand="block">Login</ion-button>
+          <div class="form-group">
+            <ion-input
+              placeholder="Password"
+              type="password"
+              formControlName="password"></ion-input>
+
+            <ion-text color="danger"
+              *ngIf="formErrors.password && password.invalid && (password.dirty || password.touched)">
+              <small>{{ formErrors?.password }}</small>
+            </ion-text>
+          </div>
+
+          <ion-button
+            color="primary"
+            expand="block"
+            [disabled]="frm.pristine || frm.invalid">
+            Login
+          </ion-button>
+        </form>
 
         <a href="#" color="light">Forgot password?</a>
       </ion-col>
