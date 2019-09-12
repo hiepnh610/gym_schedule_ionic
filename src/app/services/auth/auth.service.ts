@@ -12,48 +12,19 @@ export class AuthService {
 
   apiUrl = 'http://localhost:3000/api/';
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) {}
 
   login(data: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl + config.api.login, data)
-      .pipe(
-        tap(_ => this.log('login')),
-        catchError(this.handleError('login', []))
-      );
+    return this.http.post<any>(this.apiUrl + config.api.login, data);
   }
 
   logout(): Observable<any> {
-    return this.http.get<any>(this.apiUrl + 'signout')
-      .pipe(
-        tap(_ => this.log('logout')),
-        catchError(this.handleError('logout', []))
-      );
+    return this.http.get<any>(this.apiUrl + 'signout');
   }
 
-  signUp (data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + config.api.signUp, data)
-      .pipe(
-        tap(_ => this.log('login')),
-        catchError(this.handleError('login', []))
-      );
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
-
-  /** Log a HeroService message with the MessageService */
-  private log(message: string) {
-    console.log(message);
+  signUp(data: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl + config.api.signUp, data);
   }
 }

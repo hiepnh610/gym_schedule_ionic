@@ -1,8 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
+import { takeUntil } from 'rxjs/internal/operators/takeUntil';
+import {
+  FormGroup,
+  FormControl,
+  Validators
+} from '@angular/forms';
 
 import { BaseComponent } from '@common/base/base.component';
 import { ERROR_MESSAGES } from '@constants/messages';
+import { AuthService } from '@services/auth/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -67,12 +75,53 @@ export class SignUpPage extends BaseComponent implements OnInit {
     }
   };
 
-  constructor() {
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    public toastController: ToastController
+  ) {
     super();
   }
 
   ngOnInit() {
     super.ngOnInit();
+  }
+
+  login() {
+    this.router.navigate(['']);
+  }
+
+  signUp() {
+    const params = {
+      email: this.email.value,
+      full_name: this.fullName.value,
+      password: this.password.value,
+      confirm_password: this.confirmPassword.value,
+      username: this.username.value
+    };
+
+    this.authService.signUp(params)
+      .pipe(takeUntil(this.unsubscribeAll))
+      .subscribe(res => {
+        if (res.token) {
+          localStorage.setItem('token', res.token);
+          this.router.navigate(['news-feed']);
+        }
+      }, (err) => {
+        if (err && err.error && err.error.message) {
+          this.presentToast(err.error.message);
+        }
+      });
+  }
+
+  async presentToast(msg) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 3000,
+      position: 'top'
+    });
+
+    toast.present();
   }
 
   get email() { return this.frm.get('email'); }

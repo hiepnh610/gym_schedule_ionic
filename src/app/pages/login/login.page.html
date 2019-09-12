@@ -28,13 +28,6 @@
               *ngIf="formErrors.password && password.invalid && (password.dirty || password.touched)">
               <small>{{ formErrors?.password }}</small>
             </ion-text>
-
-            <ion-text
-              color="danger"
-              class="text-error"
-              *ngIf="errorMessage">
-              <small>{{ errorMessage }}</small>
-            </ion-text>
           </div>
 
           <div class="form-group">

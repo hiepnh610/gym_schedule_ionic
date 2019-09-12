@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { takeUntil } from 'rxjs/internal/operators/takeUntil';
 import {
-  NgForm,
   FormGroup,
   FormControl,
   Validators
@@ -11,7 +10,6 @@ import {
 
 import { BaseComponent } from '@common/base/base.component';
 import { ERROR_MESSAGES } from '@constants/messages';
-
 import { AuthService } from '@services/auth/auth.service';
 
 @Component({
@@ -63,8 +61,8 @@ export class LoginPage extends BaseComponent implements OnInit {
     super.ngOnInit();
   }
 
-  register() {
-    this.router.navigate(['register']);
+  signUp() {
+    this.router.navigate(['sign-up']);
   }
 
   login() {
@@ -79,13 +77,10 @@ export class LoginPage extends BaseComponent implements OnInit {
         if (res.token) {
           localStorage.setItem('token', res.token);
           this.router.navigate(['news-feed']);
-          console.log('object');
         }
       }, (err) => {
         if (err && err.error && err.error.message) {
-          this.errorMessage = err.error.message;
-          console.log('err', err.error.message);
-          console.log('object2');
+          this.presentToast(err.error.message);
         }
       });
   }
@@ -93,7 +88,7 @@ export class LoginPage extends BaseComponent implements OnInit {
   async presentToast(msg) {
     const toast = await this.toastController.create({
       message: msg,
-      duration: 2000,
+      duration: 3000,
       position: 'top'
     });
 

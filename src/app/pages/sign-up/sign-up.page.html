@@ -74,7 +74,8 @@
               <ion-button
                 color="primary"
                 expand="block"
-                [disabled]="frm.pristine || frm.invalid">
+                [disabled]="frm.pristine || frm.invalid"
+                (click)="signUp()">
                 Sign Up
               </ion-button>
             </div>
