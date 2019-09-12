@@ -22,8 +22,17 @@
       "@constants/*": [
         "src/app/constants/*"
       ],
+      "@services/*": [
+        "src/app/services/*"
+      ],
       "@common/*": [
         "src/app/pages/common/*"
+      ],
+      "@page/*": [
+        "src/app/pages/*"
+      ],
+      "@src/*": [
+        "src/*"
       ]
     }
   }
