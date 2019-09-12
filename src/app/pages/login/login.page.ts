@@ -1,8 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
+import { takeUntil } from 'rxjs/internal/operators/takeUntil';
+import {
+  NgForm,
+  FormGroup,
+  FormControl,
+  Validators
+} from '@angular/forms';
 
 import { BaseComponent } from '@common/base/base.component';
 import { ERROR_MESSAGES } from '@constants/messages';
+
+import { AuthService } from '@services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +22,7 @@ import { ERROR_MESSAGES } from '@constants/messages';
 export class LoginPage extends BaseComponent implements OnInit {
 
   public frm: FormGroup;
+  public errorMessage: string;
 
   public controlConfig = {
     username: new FormControl('', [
@@ -40,12 +51,53 @@ export class LoginPage extends BaseComponent implements OnInit {
     }
   };
 
-  constructor() {
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    public toastController: ToastController
+  ) {
     super();
   }
 
   ngOnInit() {
     super.ngOnInit();
+  }
+
+  register() {
+    this.router.navigate(['register']);
+  }
+
+  login() {
+    const params = {
+      username: this.username.value,
+      password: this.password.value
+    };
+
+    this.authService.login(params)
+      .pipe(takeUntil(this.unsubscribeAll))
+      .subscribe(res => {
+        if (res.token) {
+          localStorage.setItem('token', res.token);
+          this.router.navigate(['news-feed']);
+          console.log('object');
+        }
+      }, (err) => {
+        if (err && err.error && err.error.message) {
+          this.errorMessage = err.error.message;
+          console.log('err', err.error.message);
+          console.log('object2');
+        }
+      });
+  }
+
+  async presentToast(msg) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 2000,
+      position: 'top'
+    });
+
+    toast.present();
   }
 
   get username() { return this.frm.get('username'); }
