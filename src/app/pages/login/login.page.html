@@ -8,7 +8,9 @@
               placeholder="Username"
               formControlName="username"></ion-input>
 
-            <ion-text color="danger"
+            <ion-text
+              color="danger"
+              class="text-error"
               *ngIf="formErrors.username && username.invalid && (username.dirty || username.touched)">
               <small>{{ formErrors?.username }}</small>
             </ion-text>
@@ -20,21 +22,27 @@
               type="password"
               formControlName="password"></ion-input>
 
-            <ion-text color="danger"
+            <ion-text
+              color="danger"
+              class="text-error"
               *ngIf="formErrors.password && password.invalid && (password.dirty || password.touched)">
               <small>{{ formErrors?.password }}</small>
             </ion-text>
           </div>
 
-          <ion-button
-            color="primary"
-            expand="block"
-            [disabled]="frm.pristine || frm.invalid">
-            Login
-          </ion-button>
+          <div class="form-group">
+            <ion-button
+              color="primary"
+              expand="block"
+              [disabled]="frm.pristine || frm.invalid">
+              Login
+            </ion-button>
+          </div>
         </form>
 
-        <a href="#" color="light">Forgot password?</a>
+        <p class="ion-text-center">
+          <a href="#" color="light">Forgot password?</a>
+        </p>
       </ion-col>
     </ion-row>
   </ion-grid>

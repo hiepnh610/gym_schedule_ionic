@@ -1,0 +1,14 @@
+.form-group {
+  margin-bottom: $size-base;
+
+  ion-input {
+    --padding-start: 10px;
+    border-radius: $input-radius-size;
+    border: 1px solid $border-color;
+  }
+
+  .text-error {
+    display: block;
+    margin-top: $size-base / 4;
+  }
+}
