@@ -76,7 +76,7 @@ export class LoginPage extends BaseComponent implements OnInit {
       .subscribe(res => {
         if (res.token) {
           localStorage.setItem('token', res.token);
-          this.router.navigate(['news-feed']);
+          this.router.navigate(['tabs/news-feed']);
         }
       }, (err) => {
         if (err && err.error && err.error.message) {
