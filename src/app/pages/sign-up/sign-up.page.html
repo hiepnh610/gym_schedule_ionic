@@ -1,74 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/"
+        color="dark"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <ion-grid>
     <ion-row center>
       <ion-col>
-        <p class="ion-text-center">
-          <a [routerLink]="['/login']" color="light">Login</a>
-        </p>
-
         <form [formGroup]="frm">
           <div class="form-group">
-            <ion-input
-              placeholder="Email"
-              formControlName="email"></ion-input>
+            <ion-input placeholder="Email" formControlName="email"></ion-input>
 
-            <ion-text
-              color="danger"
-              class="text-error"
+            <ion-text color="danger" class="text-error"
               *ngIf="formErrors.email && email.invalid && (email.dirty || email.touched)">
               <small>{{ formErrors?.email }}</small>
             </ion-text>
           </div>
 
           <div class="form-group">
-            <ion-input
-              placeholder="Username"
-              formControlName="username"></ion-input>
+            <ion-input placeholder="Username" formControlName="username"></ion-input>
 
-            <ion-text
-              color="danger"
-              class="text-error"
+            <ion-text color="danger" class="text-error"
               *ngIf="formErrors.username && username.invalid && (username.dirty || username.touched)">
               <small>{{ formErrors?.username }}</small>
             </ion-text>
           </div>
 
           <div class="form-group">
-            <ion-input
-              placeholder="Full Name"
-              formControlName="fullName"></ion-input>
+            <ion-input placeholder="Full Name" formControlName="fullName"></ion-input>
 
-            <ion-text
-              color="danger"
-              class="text-error"
+            <ion-text color="danger" class="text-error"
               *ngIf="formErrors.fullName && fullName.invalid && (fullName.dirty || fullName.touched)">
               <small>{{ formErrors?.fullName }}</small>
             </ion-text>
           </div>
 
           <div class="form-group">
-            <ion-input
-              type="password"
-              placeholder="Password"
-              formControlName="password"></ion-input>
+            <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
 
-            <ion-text
-              color="danger"
-              class="text-error"
+            <ion-text color="danger" class="text-error"
               *ngIf="formErrors.password && password.invalid && (password.dirty || password.touched)">
               <small>{{ formErrors?.password }}</small>
             </ion-text>
           </div>
 
           <div class="form-group">
-            <ion-input
-              type="password"
-              placeholder="Confirm Password"
-              formControlName="confirmPassword"></ion-input>
+            <ion-input type="password" placeholder="Confirm Password" formControlName="confirmPassword"></ion-input>
 
-            <ion-text
-              color="danger"
-              class="text-error"
+            <ion-text color="danger" class="text-error"
               *ngIf="formErrors.confirmPassword && confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
               <small>{{ formErrors?.confirmPassword }}</small>
             </ion-text>
@@ -76,8 +60,10 @@
 
           <div class="form-group">
             <ion-button
+              class="ion-text-uppercase"
               color="primary"
               expand="block"
+              strong="true"
               [disabled]="frm.pristine || frm.invalid"
               (click)="signUp()">
               Sign Up

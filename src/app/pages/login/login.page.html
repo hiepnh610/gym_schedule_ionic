@@ -1,11 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/"
+        color="dark"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <ion-grid>
     <ion-row center>
       <ion-col>
-        <p class="ion-text-center">
-          <a [routerLink]="['/sign-up']" color="light">Sign Up</a>
-        </p>
-
         <form [formGroup]="frm">
           <div class="form-group">
             <ion-input
@@ -14,7 +20,7 @@
 
             <ion-text
               color="danger"
-              class="text-error"
+              class="text-error ion-padding-start"
               *ngIf="formErrors.username && username.invalid && (username.dirty || username.touched)">
               <small>{{ formErrors?.username }}</small>
             </ion-text>
@@ -28,7 +34,7 @@
 
             <ion-text
               color="danger"
-              class="text-error"
+              class="text-error ion-padding-start"
               *ngIf="formErrors.password && password.invalid && (password.dirty || password.touched)">
               <small>{{ formErrors?.password }}</small>
             </ion-text>
@@ -36,8 +42,10 @@
 
           <div class="form-group">
             <ion-button
+              class="ion-text-uppercase"
               color="primary"
               expand="block"
+              strong="true"
               [disabled]="frm.pristine || frm.invalid"
               (click)="login()">
               Login
@@ -46,7 +54,9 @@
         </form>
 
         <p class="ion-text-center">
-          <a href="#" color="light">Forgot password?</a>
+          <ion-text
+            color="dark"
+            [routerLink]="['/forgot-password']">Forgot password?</ion-text>
         </p>
       </ion-col>
     </ion-row>
