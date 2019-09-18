@@ -1,9 +1,10 @@
-<ion-header>
+<ion-header no-border>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button
+        text=""
         defaultHref="/"
-        color="dark"></ion-back-button>
+        color="primary"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -56,7 +57,9 @@
         <p class="ion-text-center">
           <ion-text
             color="dark"
-            [routerLink]="['/forgot-password']">Forgot password?</ion-text>
+            [routerLink]="['/forgot-password']">
+            Forgot password?
+          </ion-text>
         </p>
       </ion-col>
     </ion-row>

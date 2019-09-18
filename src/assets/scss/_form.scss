@@ -3,8 +3,14 @@
 
   ion-input {
     --padding-start: 15px;
+    --padding-top: 13px;
+    --padding-bottom: 13px;
     border-radius: $input-radius-size;
     border: 1px solid $border-color;
+
+    &.ion-invalid.ion-touched {
+      border-color: var(--ion-color-primary);
+    }
   }
 
   .text-error {

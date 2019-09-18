@@ -1,5 +1,5 @@
 ion-grid {
   position: relative;
-  top: 50%;
+  top: calc(50% - 22px);
   transform: translate(0, -50%);
 }
