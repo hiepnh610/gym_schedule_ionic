@@ -7,6 +7,7 @@ export const ERROR_MESSAGES = {
   FULL_NAME_REQUIRED: 'Full name is required.',
 
   PASSWORD_REQUIRED: 'Password is required.',
+  PASSWORD_NOT_MATCH: 'New Password does not match Confirm Password.',
 
   CONFIRM_PASSWORD_REQUIRED: 'Confirm password is required.',
   CONFIRM_PASSWORD_NOT_MATCH: 'Confirm password not match to password.',

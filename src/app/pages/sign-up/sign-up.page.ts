@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { takeUntil } from 'rxjs/internal/operators/takeUntil';
+import { Matcher } from '@validators/matcher.validator';
 import {
   FormGroup,
   FormControl,
@@ -36,11 +37,13 @@ export class SignUpPage extends BaseComponent implements OnInit {
     ]),
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(8)
+      Validators.minLength(8),
+      Matcher('confirmPassword')
     ]),
     confirmPassword: new FormControl('', [
       Validators.required,
-      Validators.minLength(8)
+      Validators.minLength(8),
+      Matcher('password')
     ])
   };
 
@@ -54,24 +57,26 @@ export class SignUpPage extends BaseComponent implements OnInit {
 
   public validationMessages = {
     email: {
-      required: ERROR_MESSAGES.EMAIL_REQUIRED,
-      email: ERROR_MESSAGES.EMAIL_VALID
+      email: ERROR_MESSAGES.EMAIL_VALID,
+      required: ERROR_MESSAGES.EMAIL_REQUIRED
     },
     username: {
-      required: ERROR_MESSAGES.USERNAME_REQUIRED,
-      minlength: ERROR_MESSAGES.MIN_LENGTH
+      minlength: ERROR_MESSAGES.MIN_LENGTH,
+      required: ERROR_MESSAGES.USERNAME_REQUIRED
     },
     fullName: {
-      required: ERROR_MESSAGES.FULL_NAME_REQUIRED,
-      minlength: ERROR_MESSAGES.MIN_LENGTH
+      minlength: ERROR_MESSAGES.MIN_LENGTH,
+      required: ERROR_MESSAGES.FULL_NAME_REQUIRED
     },
     password: {
-      required: ERROR_MESSAGES.PASSWORD_REQUIRED,
-      minlength: ERROR_MESSAGES.MIN_LENGTH
+      minlength: ERROR_MESSAGES.MIN_LENGTH,
+      nomatch: ERROR_MESSAGES.PASSWORD_NOT_MATCH,
+      required: ERROR_MESSAGES.PASSWORD_REQUIRED
     },
     confirmPassword: {
-      required: ERROR_MESSAGES.CONFIRM_PASSWORD_REQUIRED,
-      minlength: ERROR_MESSAGES.MIN_LENGTH
+      minlength: ERROR_MESSAGES.MIN_LENGTH,
+      nomatch: ERROR_MESSAGES.CONFIRM_PASSWORD_NOT_MATCH,
+      required: ERROR_MESSAGES.CONFIRM_PASSWORD_REQUIRED
     }
   };
 

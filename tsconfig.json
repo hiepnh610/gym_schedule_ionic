@@ -19,6 +19,9 @@
       "dom"
     ],
     "paths": {
+      "@validators/*": [
+        "src/app/validators/*"
+      ],
       "@constants/*": [
         "src/app/constants/*"
       ],
