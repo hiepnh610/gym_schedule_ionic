@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { Storage } from '@ionic/storage';
+import { Platform } from '@ionic/angular';
 
 import config from '@src/config';
 
@@ -10,21 +11,37 @@ import config from '@src/config';
 })
 export class AuthService {
 
-  apiUrl = 'http://localhost:3000/api/';
+  public authState = new BehaviorSubject(false);
 
   constructor(
-    private http: HttpClient
-  ) {}
-
-  login(data: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl + config.api.login, data);
+    private http: HttpClient,
+    private storage: Storage,
+    private platform: Platform
+  ) {
+    this.platform.ready().then(() => {
+      this.ifLoggedIn();
+    });
   }
 
-  logout(): Observable<any> {
-    return this.http.get<any>(this.apiUrl + 'signout');
+  ifLoggedIn() {
+    this.storage
+      .get('token')
+      .then((response) => {
+        if (response) {
+          this.authState.next(true);
+        }
+      });
+  }
+
+  login(data: any): Observable<any> {
+    return this.http.post<any>(config.BASE_URL + config.api.login, data);
   }
 
   signUp(data: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl + config.api.signUp, data);
+    return this.http.post<any>(config.BASE_URL + config.api.signUp, data);
+  }
+
+  isAuthenticated() {
+    return this.authState.value;
   }
 }

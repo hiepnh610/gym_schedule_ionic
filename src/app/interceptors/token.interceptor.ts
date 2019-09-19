@@ -12,24 +12,28 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 
+import { Storage } from '@ionic/storage';
+
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
   constructor(
     private router: Router,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private storage: Storage
   ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    const token = localStorage.getItem('token');
-
-    if (token) {
-      request = request.clone({
-        setHeaders: {
-          'Authorization': token
+    this.getToken()
+      .then((token: any) => {
+        if (token) {
+          request = request.clone({
+            setHeaders: {
+              Authorization: token
+            }
+          });
         }
       });
-    }
 
     if (!request.headers.has('Content-Type')) {
       request = request.clone({
@@ -69,5 +73,14 @@ export class TokenInterceptor implements HttpInterceptor {
       position: 'top'
     });
     toast.present();
+  }
+
+  getToken(): any {
+    return this.storage
+      .get('token')
+      .then((token) => {
+        const val = JSON.parse(token);
+        return val;
+      });
   }
 }

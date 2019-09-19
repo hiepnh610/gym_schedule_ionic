@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@services/auth/auth.service';
 import { Router } from '@angular/router';
+
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-news-feed',
@@ -10,11 +11,19 @@ import { Router } from '@angular/router';
 export class NewsFeedPage implements OnInit {
 
   constructor(
-    private authService: AuthService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private storage: Storage
+  ) {}
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.storage
+      .remove('token')
+      .then(() => {
+        this.router.navigate(['login']);
+      });
   }
 
 }

@@ -8,6 +8,8 @@ import {
   Validators
 } from '@angular/forms';
 
+import { Storage } from '@ionic/storage';
+
 import { BaseComponent } from '@common/base/base.component';
 import { ERROR_MESSAGES } from '@constants/messages';
 import { AuthService } from '@services/auth/auth.service';
@@ -52,17 +54,14 @@ export class LoginPage extends BaseComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private storage: Storage
   ) {
     super();
   }
 
   ngOnInit() {
     super.ngOnInit();
-  }
-
-  signUp() {
-    this.router.navigate(['sign-up']);
   }
 
   login() {
@@ -75,8 +74,8 @@ export class LoginPage extends BaseComponent implements OnInit {
       .pipe(takeUntil(this.unsubscribeAll))
       .subscribe(res => {
         if (res.token) {
-          localStorage.setItem('token', res.token);
           this.router.navigate(['tabs/news-feed']);
+          this.storage.set('token', res.token);
         }
       }, (err) => {
         if (err && err.error && err.error.message) {
