@@ -79,8 +79,7 @@ export class TokenInterceptor implements HttpInterceptor {
     return this.storage
       .get('token')
       .then((token) => {
-        const val = JSON.parse(token);
-        return val;
+        return token;
       });
   }
 }

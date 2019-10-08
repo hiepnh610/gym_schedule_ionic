@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
 import { Platform } from '@ionic/angular';
+import { BehaviorSubject } from 'rxjs';
 
 import config from '@src/config';
 
@@ -11,7 +12,7 @@ import config from '@src/config';
 })
 export class AuthService {
 
-  public authState = new BehaviorSubject(false);
+  authState = new BehaviorSubject(false);
 
   constructor(
     private http: HttpClient,

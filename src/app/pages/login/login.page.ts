@@ -14,6 +14,8 @@ import { BaseComponent } from '@common/base/base.component';
 import { ERROR_MESSAGES } from '@constants/messages';
 import { AuthService } from '@services/auth/auth.service';
 
+import { AuthGuardService } from '@services/auth-guard/auth-guard.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -74,8 +76,9 @@ export class LoginPage extends BaseComponent implements OnInit {
       .pipe(takeUntil(this.unsubscribeAll))
       .subscribe(res => {
         if (res.token) {
-          this.router.navigate(['tabs/news-feed']);
           this.storage.set('token', res.token);
+          this.router.navigate(['tabs/news-feed']);
+          this.authService.authState.next(true);
         }
       }, (err) => {
         if (err && err.error && err.error.message) {

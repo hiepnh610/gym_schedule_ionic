@@ -32,8 +32,6 @@ export class AppComponent {
       .subscribe((state: boolean): void => {
         if (state) {
           this.router.navigate(['tabs/news-feed']);
-        } else {
-          this.router.navigate(['login']);
         }
       });
     });

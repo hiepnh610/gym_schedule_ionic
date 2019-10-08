@@ -9,7 +9,7 @@ export class AuthGuardService implements CanActivate {
     public authService: AuthService
   ) {}
 
-  canActivate(): boolean {
+  canActivate(): any {
     return this.authService.isAuthenticated();
   }
 }

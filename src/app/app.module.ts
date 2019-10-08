@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -13,7 +13,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { AuthGuardService } from '@services/auth-guard/auth-guard.service';
-import { setTokenReducer } from '@store/auth/auth.reducers';
+import { AuthService } from '@services/auth/auth.service';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,12 +25,13 @@ import { setTokenReducer } from '@store/auth/auth.reducers';
     AppRoutingModule,
     HttpClientModule,
     IonicStorageModule.forRoot(),
-    StoreModule.forRoot({ count: setTokenReducer })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [
     StatusBar,
     SplashScreen,
     AuthGuardService,
+    AuthService,
     {
       provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy
