@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://gym-schedule.herokuapp.com'
+  baseUrl: 'http://localhost:3000/'
 };
 
 /*

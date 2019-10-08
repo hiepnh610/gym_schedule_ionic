@@ -14,8 +14,6 @@ import { BaseComponent } from '@common/base/base.component';
 import { ERROR_MESSAGES } from '@constants/messages';
 import { AuthService } from '@services/auth/auth.service';
 
-import { AuthGuardService } from '@services/auth-guard/auth-guard.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',

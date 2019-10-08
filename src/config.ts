@@ -1,3 +1,5 @@
+import { environment } from '@src/environments/environment';
+
 interface ApiTypes {
   activities: string;
   activityDetail: string;
@@ -32,7 +34,7 @@ interface ApiTypes {
   workout: string;
 }
 
-const BASE_URL = 'http://localhost:3000/';
+const BASE_URL = environment.baseUrl;
 
 const api: ApiTypes = {
   activities: 'api/activities/',
