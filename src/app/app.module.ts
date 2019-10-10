@@ -14,10 +14,13 @@ import { AppComponent } from './app.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { AuthGuardService } from '@services/auth-guard/auth-guard.service';
 import { AuthService } from '@services/auth/auth.service';
+import { NewsFeedService } from '@services/news-feed/news-feed.service';
 import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent
+  ],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { environment } from '../environments/environment';
     SplashScreen,
     AuthGuardService,
     AuthService,
+    NewsFeedService,
     {
       provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy

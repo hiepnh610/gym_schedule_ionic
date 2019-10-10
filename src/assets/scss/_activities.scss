@@ -1,0 +1,106 @@
+.activities-list {
+  .activity {
+    margin-bottom: 30px;
+
+    .activity-date {
+      font-weight: 600;
+      margin-top: 0;
+    }
+
+    .activity-body {
+      background: var(--ion-color-primary-contrast);
+      border-radius: $border-radius-size;
+      border: 1px solid $border-color;
+      position: relative;
+
+      + .activity-body {
+        margin-top: 15px;
+      }
+
+      header {
+        border-bottom: 1px solid $border-color;
+        padding: $half-size-base;
+
+        p {
+          margin: 0;
+
+          strong,
+          small {
+            display: block;
+          }
+
+          strong {
+            font-size: $size-base;
+            margin-bottom: $half-size-base;
+          }
+        }
+      }
+
+      section {
+        padding: $half-size-base;
+
+        strong {
+          display: block;
+          margin-bottom: $half-size-base;
+        }
+
+        p {
+          margin: 0;
+
+          ion-icon {
+            float: left;
+            margin-right: 5px;
+            margin-top: 5px;
+          }
+        }
+      }
+
+      .small-avatar {
+        background-color: var(--ion-color-primary-contrast);
+        border-radius: $border-radius-size;
+        border: 1px solid $border-color;
+        float: left;
+        margin-right: $half-size-base;
+        max-width: 40px;
+        min-height: 40px;
+        min-width: 40px;
+
+        img {
+          float: left;
+        }
+      }
+
+      .profile-like,
+      .profile-comment {
+        &:not(.not-cursor) {
+          cursor: pointer;
+        }
+
+        &:hover {
+          background: $border-color;
+        }
+      }
+
+      textarea,
+      textarea.form-control {
+        background: $comment-bg;
+        min-height: 40px;
+      }
+
+      .comments {
+        .comments-list {
+          .small-avatar {
+            max-width: 30px;
+            min-height: 30px;
+            min-width: 30px;
+          }
+        }
+
+        .comment-body {
+          background: $comment-bg;
+          min-height: 30px;
+        }
+      }
+    }
+  }
+}

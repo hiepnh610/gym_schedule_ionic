@@ -1,9 +1,49 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>news-feed</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content padding>
+  <div class="activities-list" *ngIf="listActivities">
+    <div class="activity" *ngFor="let activities of listActivities | keyvalue">
+      <h6 class="activity-date" *ngIf="activities.value.length > 0" color="primary">{{ activities.key | formatDate: "MMMM D, YYYY" }}</h6>
 
-<ion-content>
-<ion-button (click)="logout()">Logout</ion-button>
+      <div class="activity-body" *ngFor="let activity of activities.value | keyvalue">
+        <header>
+          <div class="small-avatar">
+            <img [src]="activity.value.avatar" alt="" *ngIf="activity.value.avatar" />
+          </div>
+
+          <p>
+            <strong class="text-primary">{{ activity.value.full_name }}</strong>
+
+            <small>{{ activity.value.created_at | formatDate: "MMMM D, YYYY [at] h:m A" }}</small>
+          </p>
+        </header>
+
+        <section>
+          <strong>{{ activity.value.workout_name }}</strong>
+
+          <p>
+            <small *ngIf="activity.value.exercises && activity.value.exercises.length === 1">Quantity: {{ activity.value.exercises.length }} exercise</small>
+
+            <small *ngIf="activity.value.exercises && activity.value.exercises.length > 1">Quantity: {{ activity.value.exercises.length }} exercises</small>
+
+            <small *ngIf="activity.value.exercises && weightTotal(activity.value.exercises) > 0"></small>
+
+            <small *ngIf="activity.value.exercises && weightTotal(activity.value.exercises) > 0">Weight: {{ weightTotal(activity.value.exercises) }} kg</small>
+          </p>
+
+          <p *ngIf="activity.value.like && activity.value.like.quantity">
+            <small *ngIf="activity.value.like.quantity > 1">
+              <ion-icon name="heart-empty"></ion-icon>
+
+              {{ activity.value.like.quantity }} Likes
+            </small>
+
+            <small *ngIf="activity.value.like.quantity === 1">
+              <ion-icon name="heart-empty"></ion-icon>
+
+              {{ activity.value.like.quantity }} Like
+            </small>
+          </p>
+        </section>
+      </div>
+    </div>
+  </div>
 </ion-content>

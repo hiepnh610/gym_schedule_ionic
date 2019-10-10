@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { NewsFeedPage } from './news-feed.page';
+import { FormatDatePipe } from '@src/app/pipes/format-date/format-date.pipe';
 
 const routes: Routes = [
   {
@@ -21,6 +22,9 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [NewsFeedPage]
+  declarations: [
+    NewsFeedPage,
+    FormatDatePipe
+  ]
 })
 export class NewsFeedPageModule {}
