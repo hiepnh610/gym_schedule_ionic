@@ -1,22 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-
-import { takeUntil } from 'rxjs/internal/operators/takeUntil';
+import { Store, select } from '@ngrx/store';
 
 import { BaseComponent } from '@common/base/base.component';
-import { NewsFeedService } from '@services/news-feed/news-feed.service';
-
-interface SetType {
-  reps?: number;
-  weight?: number;
-}
-
-interface Exercise {
-  'exercise_id'?: string;
-  'exercise_log'?: SetType[];
-  'exercise_image'?: string;
-  'exercise_name'?: string;
-  'exercise_note'?: string;
-}
+import { ISetType, IExercise } from './news-feed.interface';
+import { GetActivities } from '@store/actions/activity.actions';
+import { IAppState } from '@store/state/app.state';
+import { selectActivityList } from '@store/selectors/activity.selectors';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-news-feed',
@@ -25,10 +15,10 @@ interface Exercise {
 })
 export class NewsFeedPage extends BaseComponent implements OnInit {
 
-  public listActivities: any = [];
+  public listActivities$: Observable<{}> = this.store.pipe(select(selectActivityList));
 
   constructor(
-    private newsFeedService: NewsFeedService
+    private store: Store<IAppState>
   ) {
     super();
   }
@@ -37,26 +27,14 @@ export class NewsFeedPage extends BaseComponent implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.getNewsFeed();
+    this.store.dispatch(new GetActivities());
   }
 
-  getNewsFeed() {
-    this.newsFeedService.newsFeed()
-    .pipe(takeUntil(this.unsubscribeAll))
-      .subscribe(res => {
-        this.listActivities = res;
-      }, (err) => {
-        if (err && err.error && err.error.message) {
-          console.log(err.error.message);
-        }
-      });
-  }
-
-  weightTotal(exercises: Exercise[]) {
+  weightTotal(exercises: IExercise[]) {
     let total = 0;
 
     for (const exercise of exercises) {
-      const exerciseLog: SetType[] = exercise.exercise_log || [];
+      const exerciseLog: ISetType[] = exercise.exercise_log || [];
 
       for (const exercise2 of exerciseLog) {
         const weight: number = exercise2.weight || 0;

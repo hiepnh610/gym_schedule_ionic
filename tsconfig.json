@@ -32,6 +32,9 @@
       "@common/*": [
         "src/app/pages/common/*"
       ],
+      "@models/*": [
+        "src/app/models/*"
+      ],
       "@store/*": [
         "src/app/store/*"
       ],
