@@ -1,20 +1,21 @@
 import {
   ActivityActions,
   EActivityActions
-} from '../actions/activity.actions';
+} from '@store/actions/activity.actions';
 import {
   initialListActivitiesState
-} from '../state/listActivities.state';
+} from '@store/state/listActivities.state';
+import { IAppState } from '@store/state/app.state';
 
 export const activityReducers = (
   state = initialListActivitiesState,
   action: ActivityActions
-): any => {
+): IAppState => {
   switch (action.type) {
     case EActivityActions.GetActivitiesSuccess: {
       return {
         ...state,
-        listActivities: action.payload
+        ...action.payload
       };
     }
 

@@ -1,15 +1,12 @@
-import { RouterReducerState } from '@ngrx/router-store';
-
-import { IActivityState, initialListActivitiesState } from './listActivities.state';
+import {
+  IActivityState
+} from './listActivities.state';
 
 export interface IAppState {
-  router?: RouterReducerState;
-  listActivities: IActivityState;
+  listActivities?: IActivityState;
 }
 
-export const initialAppState: IAppState = {
-  listActivities: initialListActivitiesState
-};
+export const initialAppState: IAppState = {};
 
 export function getInitialState(): IAppState {
   return initialAppState;
