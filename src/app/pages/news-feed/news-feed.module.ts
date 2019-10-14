@@ -8,6 +8,8 @@ import { IonicModule } from '@ionic/angular';
 import { NewsFeedPage } from './news-feed.page';
 import { FormatDatePipe } from '@src/app/pipes/format-date/format-date.pipe';
 
+import { ActivitiesFooterComponent } from '@components/activities-footer/activities-footer.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -24,7 +26,8 @@ const routes: Routes = [
   ],
   declarations: [
     NewsFeedPage,
-    FormatDatePipe
+    FormatDatePipe,
+    ActivitiesFooterComponent
   ]
 })
 export class NewsFeedPageModule {}

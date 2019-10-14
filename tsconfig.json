@@ -23,6 +23,9 @@
       "@validators/*": [
         "src/app/validators/*"
       ],
+      "@components/*": [
+        "src/app/components/*"
+      ],
       "@constants/*": [
         "src/app/constants/*"
       ],

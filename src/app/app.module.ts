@@ -15,10 +15,12 @@ import { IonicStorageModule } from '@ionic/storage';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { environment } from '../environments/environment';
+
 import { AuthGuardService } from '@services/auth-guard/auth-guard.service';
 import { AuthService } from '@services/auth/auth.service';
 import { NewsFeedService } from '@services/news-feed/news-feed.service';
-import { environment } from '../environments/environment';
+
 import { ActivityEffects } from '@store/effects/activity.effects';
 import { appReducers } from '@store/reducers/app.reducers';
 
@@ -26,7 +28,8 @@ import { appReducers } from '@store/reducers/app.reducers';
   declarations: [
     AppComponent
   ],
-  entryComponents: [],
+  entryComponents: [
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
