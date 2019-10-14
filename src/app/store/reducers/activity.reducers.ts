@@ -5,12 +5,13 @@ import {
 import {
   initialListActivitiesState
 } from '@store/state/listActivities.state';
-import { IAppState } from '@store/state/app.state';
+
+import { IActivityState } from '@store/state/listActivities.state';
 
 export const activityReducers = (
   state = initialListActivitiesState,
   action: ActivityActions
-): IAppState => {
+): IActivityState => {
   switch (action.type) {
     case EActivityActions.GetActivitiesSuccess: {
       return {

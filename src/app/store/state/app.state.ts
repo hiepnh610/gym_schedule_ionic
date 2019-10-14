@@ -3,10 +3,12 @@ import {
 } from './listActivities.state';
 
 export interface IAppState {
-  listActivities?: IActivityState;
+  listActivities: IActivityState;
 }
 
-export const initialAppState: IAppState = {};
+export const initialAppState: IAppState = {
+  listActivities: {}
+};
 
 export function getInitialState(): IAppState {
   return initialAppState;
