@@ -3,17 +3,16 @@ import {
   EActivityActions
 } from '@store/actions/activity.actions';
 import {
+  IActivityState,
   initialListActivitiesState
 } from '@store/state/listActivities.state';
 
-import { IActivityState } from '@store/state/listActivities.state';
-
-export function activityReducers (
+export function activityReducers(
   state = initialListActivitiesState,
   action: ActivityActions
 ): IActivityState {
   switch (action.type) {
-    case EActivityActions.GetActivitiesSuccess: {
+    case EActivityActions.getActivitiesSuccess: {
       return {
         ...state,
         ...action.payload

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -9,7 +10,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { BaseComponent } from '@common/base/base.component';
 
 import { AuthService } from '@services/auth/auth.service';
-import { UserService } from '@services/user/user.service';
+
+import { IAppState } from '@store/state/app.state';
+import { GetUser } from '@store/actions/user.actions';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +26,7 @@ export class AppComponent extends BaseComponent {
     private statusBar: StatusBar,
     private router: Router,
     private authService: AuthService,
-    private userService: UserService
+    private store: Store<IAppState>
   ) {
     super();
     this.initializeApp();
@@ -39,13 +42,8 @@ export class AppComponent extends BaseComponent {
         .subscribe((state: boolean): void => {
           if (state) {
             this.router.navigate(['tabs/news-feed']);
+            this.store.dispatch(new GetUser());
           }
-        });
-
-      this.userService.getUser()
-        .pipe(takeUntil(this.unsubscribeAll))
-        .subscribe((resp: any) => {
-          console.log(resp);
         });
     });
   }

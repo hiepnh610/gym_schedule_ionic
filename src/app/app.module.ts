@@ -23,6 +23,7 @@ import { NewsFeedService } from '@services/news-feed/news-feed.service';
 import { UserService } from '@services/user/user.service';
 
 import { ActivityEffects } from '@store/effects/activity.effects';
+import { UserEffects } from '@store/effects/user.effects';
 import { appReducers } from '@store/reducers/app.reducers';
 
 @NgModule({
@@ -37,7 +38,10 @@ import { appReducers } from '@store/reducers/app.reducers';
     AppRoutingModule,
     HttpClientModule,
     IonicStorageModule.forRoot(),
-    EffectsModule.forRoot([ActivityEffects]),
+    EffectsModule.forRoot([
+      ActivityEffects,
+      UserEffects
+    ]),
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
     StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })

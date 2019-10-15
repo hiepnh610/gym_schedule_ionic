@@ -4,7 +4,7 @@ import { IActivityHttp } from '@models/http-models/activity-http.interface';
 
 export enum EActivityActions {
   getActivities = '[Activity] Get Activities',
-  GetActivitiesSuccess = '[Activity] Get Activities Success'
+  getActivitiesSuccess = '[Activity] Get Activities Success'
 }
 
 export class GetActivities implements Action {
@@ -12,7 +12,7 @@ export class GetActivities implements Action {
 }
 
 export class GetActivitiesSuccess implements Action {
-  public readonly type = EActivityActions.GetActivitiesSuccess;
+  public readonly type = EActivityActions.getActivitiesSuccess;
   constructor(public payload: IActivityHttp) {}
 }
 

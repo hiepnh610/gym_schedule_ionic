@@ -15,16 +15,16 @@ import { IActivityHttp } from '@models/http-models/activity-http.interface';
 export class ActivityEffects {
 
   @Effect()
-  getActivities$ = this.Actions$.pipe(
+  getActivities$ = this.actions$.pipe(
     ofType<GetActivities>(EActivityActions.getActivities),
-    switchMap(() => this.ActivityService.newsFeed()),
+    switchMap(() => this.activityService.newsFeed()),
     switchMap((activityHttp: IActivityHttp) => {
       return of(new GetActivitiesSuccess(activityHttp));
     })
   );
 
   constructor(
-    private ActivityService: NewsFeedService,
-    private Actions$: Actions
+    private activityService: NewsFeedService,
+    private actions$: Actions
   ) {}
 }

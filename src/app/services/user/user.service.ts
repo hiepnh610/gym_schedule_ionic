@@ -15,6 +15,6 @@ export class UserService {
   ) {}
 
   getUser(): Observable<any> {
-    return this.http.get<any>(config.BASE_URL + config.api.user).pipe(map((res: any) => res));
+    return this.http.get<any>(config.BASE_URL + config.api.user);
   }
 }
