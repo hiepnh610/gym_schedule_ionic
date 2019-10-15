@@ -68,6 +68,11 @@
               [disabled]="frm.pristine || frm.invalid"
               (click)="signUp()">
               Sign Up
+
+              <ion-spinner
+                class="ml-5"
+                name="crescent"
+                *ngIf="isLoading"></ion-spinner>
             </ion-button>
           </div>
         </form>

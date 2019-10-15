@@ -22,7 +22,7 @@ import { AuthService } from '@services/auth/auth.service';
 export class LoginPage extends BaseComponent implements OnInit {
 
   public frm: FormGroup;
-  public errorMessage: string;
+  public isLoading: boolean;
 
   public controlConfig = {
     username: new FormControl('', [
@@ -65,6 +65,8 @@ export class LoginPage extends BaseComponent implements OnInit {
   }
 
   login() {
+    this.isLoading = true;
+
     const params = {
       username: this.username.value,
       password: this.password.value
@@ -78,10 +80,14 @@ export class LoginPage extends BaseComponent implements OnInit {
           this.router.navigate(['tabs/news-feed']);
           this.authService.authState.next(true);
         }
+
+        this.isLoading = false;
       }, (err) => {
         if (err && err.error && err.error.message) {
           this.presentToast(err.error.message);
         }
+
+        this.isLoading = false;
       });
   }
 

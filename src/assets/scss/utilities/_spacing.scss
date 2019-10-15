@@ -1,0 +1,41 @@
+// Padding
+.p {
+  padding: $padding-size;
+}
+
+.pt-5 {
+  padding-top: $padding-size;
+}
+
+.pr-5 {
+  padding-right: $padding-size;
+}
+
+.pb-5 {
+  padding-bottom: $padding-size;
+}
+
+.pl-5 {
+  padding-left: $padding-size;
+}
+
+// Margin
+.m {
+  margin: $padding-size;
+}
+
+.mt-5 {
+  margin-top: $padding-size;
+}
+
+.mr-5 {
+  margin-right: $padding-size;
+}
+
+.mb-5 {
+  margin-bottom: $padding-size;
+}
+
+.ml-5 {
+  margin-left: $padding-size;
+}

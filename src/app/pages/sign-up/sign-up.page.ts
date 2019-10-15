@@ -23,6 +23,7 @@ import { AuthService } from '@services/auth/auth.service';
 export class SignUpPage extends BaseComponent implements OnInit {
 
   public frm: FormGroup;
+  public isLoading: boolean;
 
   public controlConfig = {
     email: new FormControl('', [
@@ -96,6 +97,8 @@ export class SignUpPage extends BaseComponent implements OnInit {
   }
 
   signUp() {
+    this.isLoading = true;
+
     const params = {
       email: this.email.value,
       full_name: this.fullName.value,
@@ -111,10 +114,14 @@ export class SignUpPage extends BaseComponent implements OnInit {
           this.storage.set('token', res.token);
           this.router.navigate(['tabs/news-feed']);
         }
+
+        this.isLoading = false;
       }, (err) => {
         if (err && err.error && err.error.message) {
           this.presentToast(err.error.message);
         }
+
+        this.isLoading = false;
       });
   }
 

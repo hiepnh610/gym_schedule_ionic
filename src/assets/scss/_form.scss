@@ -7,6 +7,7 @@
     --padding-bottom: 13px;
     border-radius: $input-radius-size;
     border: 1px solid $border-color;
+    overflow: hidden;
 
     &.ion-invalid.ion-touched {
       border-color: var(--ion-color-primary);
