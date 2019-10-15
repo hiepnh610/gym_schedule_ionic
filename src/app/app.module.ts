@@ -20,6 +20,7 @@ import { environment } from '../environments/environment';
 import { AuthGuardService } from '@services/auth-guard/auth-guard.service';
 import { AuthService } from '@services/auth/auth.service';
 import { NewsFeedService } from '@services/news-feed/news-feed.service';
+import { UserService } from '@services/user/user.service';
 
 import { ActivityEffects } from '@store/effects/activity.effects';
 import { appReducers } from '@store/reducers/app.reducers';
@@ -47,6 +48,7 @@ import { appReducers } from '@store/reducers/app.reducers';
     AuthGuardService,
     AuthService,
     NewsFeedService,
+    UserService,
     {
       provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy

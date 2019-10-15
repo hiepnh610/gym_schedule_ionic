@@ -1,6 +1,6 @@
 <ion-content padding>
   <div class="activities-list" *ngIf="(listActivities$ | async) as listActivities">
-    <div class="activity" *ngFor="let activities of listActivities | keyvalue">
+    <div class="activity" *ngFor="let activities of listActivities | keyvalue: returnZero">
       <h6 class="activity-date" *ngIf="activities.value.length > 0" color="primary">{{ activities.key | formatDate: "MMMM D, YYYY" }}</h6>
 
       <div class="activity-body" *ngFor="let activity of activities.value | keyvalue">

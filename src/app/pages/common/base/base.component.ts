@@ -19,14 +19,16 @@ export class BaseComponent extends DestroyComponent implements OnInit {
   }
 
   public buildForm() {
-    this.frm = new FormGroup(this.controlConfig);
+    if (this.controlConfig) {
+      this.frm = new FormGroup(this.controlConfig);
 
-    this.frm.valueChanges
-      .pipe(debounceTime(500))
-      .pipe(takeUntil(this.unsubscribeAll))
-      .subscribe((data: any) => this.onValueChanged(data));
+      this.frm.valueChanges
+        .pipe(debounceTime(500))
+        .pipe(takeUntil(this.unsubscribeAll))
+        .subscribe((data: any) => this.onValueChanged(data));
 
-    this.onValueChanged();
+      this.onValueChanged();
+    }
   }
 
   public onValueChanged(data?: any) {

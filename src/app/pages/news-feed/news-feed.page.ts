@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import { BaseComponent } from '@common/base/base.component';
 import { ISetType, IExercise } from './news-feed.interface';
@@ -7,7 +8,6 @@ import { GetActivities } from '@store/actions/activity.actions';
 import { IAppState } from '@store/state/app.state';
 import { IActivityState } from '@store/state/listActivities.state';
 import { selectActivityList } from '@store/selectors/activity.selectors';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-news-feed',
@@ -45,6 +45,10 @@ export class NewsFeedPage extends BaseComponent implements OnInit {
     }
 
     return total;
+  }
+
+  returnZero(): number {
+    return 0;
   }
 
 }
