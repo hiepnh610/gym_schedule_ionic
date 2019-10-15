@@ -8,10 +8,10 @@ import {
 
 import { IActivityState } from '@store/state/listActivities.state';
 
-export const activityReducers = (
+export function activityReducers (
   state = initialListActivitiesState,
   action: ActivityActions
-): IActivityState => {
+): IActivityState {
   switch (action.type) {
     case EActivityActions.GetActivitiesSuccess: {
       return {
@@ -23,4 +23,4 @@ export const activityReducers = (
     default:
       return state;
   }
-};
+}
