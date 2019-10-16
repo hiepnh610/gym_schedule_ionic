@@ -17,7 +17,7 @@ import { selectUser } from '@store/selectors/user.selectors';
 })
 export class ActivitiesFooterComponent extends BaseComponent implements OnInit {
 
-  @Input() createdBy: string;
+  @Input() activity: any;
 
   public user$: Observable<IUser> = this.store.pipe(select(selectUser));
   public isOwner = false;
@@ -32,7 +32,7 @@ export class ActivitiesFooterComponent extends BaseComponent implements OnInit {
     this.user$
       .pipe(takeUntil(this.unsubscribeAll))
       .subscribe((item: IUser) => {
-        this.isOwner = !!(this.createdBy === item.username);
+        this.isOwner = !!(this.activity.created_by === item.username);
       });
   }
 

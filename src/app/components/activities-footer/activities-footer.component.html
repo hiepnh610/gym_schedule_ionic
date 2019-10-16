@@ -6,12 +6,13 @@
   </div>
 
   <div
+    *ngIf="!isOwner && activity.like && !activity.like.status"
     class="profile-like border-right d-inline-block">
     <ion-icon name="heart-empty"></ion-icon>
   </div>
 
   <div
-    *ngIf="!isOwner"
+    *ngIf="!isOwner && !activity.like && !activity.like.status"
     class="profile-like border-right d-inline-block">
     <ion-icon name="heart"></ion-icon>
   </div>
