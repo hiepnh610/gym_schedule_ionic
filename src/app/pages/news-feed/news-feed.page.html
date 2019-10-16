@@ -26,7 +26,8 @@
 
             <small *ngIf="activity.value.exercises && weightTotal(activity.value.exercises) > 0"></small>
 
-            <small *ngIf="activity.value.exercises && weightTotal(activity.value.exercises) > 0">Weight: {{ weightTotal(activity.value.exercises) }} kg</small>
+            <small
+              *ngIf="activity.value.exercises && weightTotal(activity.value.exercises) > 0">Weight: {{ weightTotal(activity.value.exercises) }} kg</small>
           </p>
 
           <p *ngIf="activity.value.like && activity.value.like.quantity">
@@ -44,7 +45,7 @@
           </p>
         </section>
 
-        <app-activities-footer></app-activities-footer>
+        <activities-footer [createdBy]="activity.value.created_by"></activities-footer>
       </div>
     </div>
   </div>

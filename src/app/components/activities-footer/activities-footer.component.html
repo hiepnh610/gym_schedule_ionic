@@ -1,13 +1,18 @@
 <footer>
-  <div class="profile-like border-right d-inline-block not-cursor">
+  <div
+    *ngIf="isOwner"
+    class="profile-like border-right d-inline-block not-cursor">
     <ion-icon name="heart"></ion-icon>
   </div>
 
-  <div class="profile-like border-right d-inline-block">
+  <div
+    class="profile-like border-right d-inline-block">
     <ion-icon name="heart-empty"></ion-icon>
   </div>
 
-  <div class="profile-like border-right d-inline-block">
+  <div
+    *ngIf="!isOwner"
+    class="profile-like border-right d-inline-block">
     <ion-icon name="heart"></ion-icon>
   </div>
 
