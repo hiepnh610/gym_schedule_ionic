@@ -23,3 +23,5 @@ export function activityReducers(
       return state;
   }
 }
+
+export function likeActivityReducers() {}

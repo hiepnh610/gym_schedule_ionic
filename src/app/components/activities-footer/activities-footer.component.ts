@@ -10,6 +10,10 @@ import { IUser } from '@models/user.interface';
 import { IAppState } from '@store/state/app.state';
 import { selectUser } from '@store/selectors/user.selectors';
 
+import { LikeService } from '@services/like/like.service';
+
+import { LikeParams } from '@interfaces/like.interface';
+
 @Component({
   selector: 'activities-footer',
   templateUrl: './activities-footer.component.html',
@@ -23,7 +27,8 @@ export class ActivitiesFooterComponent extends BaseComponent implements OnInit {
   public isOwner = false;
 
   constructor(
-    private store: Store<IAppState>
+    private store: Store<IAppState>,
+    private likeService: LikeService
   ) {
     super();
   }
@@ -33,6 +38,19 @@ export class ActivitiesFooterComponent extends BaseComponent implements OnInit {
       .pipe(takeUntil(this.unsubscribeAll))
       .subscribe((item: IUser) => {
         this.isOwner = !!(this.activity.created_by === item.username);
+      });
+  }
+
+  like(id: string) {
+    const params: LikeParams = {
+      object_id: id,
+      object_type: 'activity'
+    };
+
+    this.likeService.likeAndUnlike(params)
+      .pipe(takeUntil(this.unsubscribeAll))
+      .subscribe(res => {
+        console.log(res);
       });
   }
 

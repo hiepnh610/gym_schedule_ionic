@@ -21,6 +21,7 @@ import { AuthGuardService } from '@services/auth-guard/auth-guard.service';
 import { AuthService } from '@services/auth/auth.service';
 import { NewsFeedService } from '@services/news-feed/news-feed.service';
 import { UserService } from '@services/user/user.service';
+import { LikeService } from '@services/like/like.service';
 
 import { ActivityEffects } from '@store/effects/activity.effects';
 import { UserEffects } from '@store/effects/user.effects';
@@ -53,6 +54,7 @@ import { appReducers } from '@store/reducers/app.reducers';
     AuthService,
     NewsFeedService,
     UserService,
+    LikeService,
     {
       provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy

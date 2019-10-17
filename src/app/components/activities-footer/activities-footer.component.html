@@ -6,6 +6,7 @@
   </div>
 
   <div
+    (click)="like(activity._id)"
     *ngIf="!isOwner && activity.like && !activity.like.status"
     class="profile-like border-right d-inline-block">
     <ion-icon name="heart-empty"></ion-icon>

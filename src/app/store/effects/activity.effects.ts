@@ -6,9 +6,11 @@ import { switchMap } from 'rxjs/operators';
 import {
   EActivityActions,
   GetActivities,
-  GetActivitiesSuccess
+  GetActivitiesSuccess,
+  LikeActivity
 } from '@store/actions/activity.actions';
 import { NewsFeedService } from '@services/news-feed/news-feed.service';
+import { LikeService } from '@services/like/like.service';
 import { IActivityHttp } from '@models/http-models/activity-http.interface';
 
 @Injectable()
@@ -25,6 +27,7 @@ export class ActivityEffects {
 
   constructor(
     private activityService: NewsFeedService,
+    private likeService: LikeService,
     private actions$: Actions
   ) {}
 }
