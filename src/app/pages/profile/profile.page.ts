@@ -26,7 +26,7 @@ export class ProfilePage extends BaseComponent implements OnInit {
     this.storage
       .remove('token')
       .then(() => {
-        this.router.navigate(['login']);
+        this.router.navigate(['login'], { replaceUrl: true });
       });
   }
 

@@ -20,14 +20,28 @@ interface ICommentType {
   username: string;
 }
 
+interface ILikeType {
+  quantity: number;
+  status: boolean;
+}
+
 export interface IActivity {
   'workout_name': string;
   _id: string;
   created_at: string;
   created_by: string;
   exercises: IExercise[];
-  like: object;
+  like: ILikeType;
   updatedAt: string;
   comment: ICommentType[];
   edited: boolean;
+}
+
+export interface ILikeParams {
+  'object_id': string;
+  'object_type': string;
+}
+
+export interface ILikeMessage {
+  message: string;
 }

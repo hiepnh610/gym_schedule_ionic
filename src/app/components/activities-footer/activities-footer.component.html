@@ -1,24 +1,19 @@
 <footer>
   <div
-    *ngIf="isOwner"
-    class="profile-like border-right d-inline-block not-cursor">
-    <ion-icon name="heart"></ion-icon>
-  </div>
-
-  <div
-    (click)="like(activity._id)"
+    (click)="likeAndUnlike(activity._id)"
     *ngIf="!isOwner && activity.like && !activity.like.status"
     class="profile-like border-right d-inline-block">
     <ion-icon name="heart-empty"></ion-icon>
   </div>
 
   <div
-    *ngIf="!isOwner && !activity.like && !activity.like.status"
-    class="profile-like border-right d-inline-block">
+    (click)="likeAndUnlike(activity._id)"
+    *ngIf="!isOwner && activity.like && activity.like.status"
+    class="profile-like border-right d-inline-block text-primary">
     <ion-icon name="heart"></ion-icon>
   </div>
 
-  <div class="profile-comment border-right d-inline-block">
-    <ion-icon name="text"></ion-icon>
+  <div class="profile-comment border-right d-inline-block text-muted">
+    <ion-icon name="chatboxes"></ion-icon>
   </div>
 </footer>

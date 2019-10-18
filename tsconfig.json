@@ -26,9 +26,6 @@
       "@components/*": [
         "src/app/components/*"
       ],
-      "@interfaces/*": [
-        "src/app/interfaces/*"
-      ],
       "@constants/*": [
         "src/app/constants/*"
       ],
