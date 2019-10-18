@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { LikeParams } from '@interfaces/like.interface';
+import { ILikeParams } from '@models/activity.interface';
 
 import config from '@src/config';
 
@@ -15,7 +15,7 @@ export class LikeService {
     private http: HttpClient
   ) {}
 
-  likeAndUnlike(param: LikeParams): Observable<any> {
+  likeAndUnlike(param: ILikeParams): Observable<any> {
     return this.http.post<any>(config.BASE_URL + config.api.likeActivity, param);
   }
 }
