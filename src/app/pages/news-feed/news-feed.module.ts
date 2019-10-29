@@ -5,10 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
+import { AutosizeModule } from 'ngx-autosize';
+
 import { NewsFeedPage } from './news-feed.page';
 import { FormatDatePipe } from '@src/app/pipes/format-date/format-date.pipe';
 
 import { ActivitiesFooterComponent } from '@components/activities-footer/activities-footer.component';
+import { ActivitiesCommentComponent } from '@components/activities-comment/activities-comment.component';
 
 const routes: Routes = [
   {
@@ -22,12 +25,14 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    AutosizeModule,
     RouterModule.forChild(routes)
   ],
   declarations: [
     NewsFeedPage,
     FormatDatePipe,
-    ActivitiesFooterComponent
+    ActivitiesFooterComponent,
+    ActivitiesCommentComponent
   ]
 })
 export class NewsFeedPageModule {}
